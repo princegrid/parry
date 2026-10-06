@@ -117,7 +117,9 @@ Workflows in `.github/workflows/`:
 | `snapshot.yml` | manual (first start), every 15 min (restart) | Loops for ~5h40m, publishing `snapshot.json` every minute |
 | `refresh.yml` | manual only | Publishes one snapshot immediately (`gh workflow run refresh.yml`) |
 
-The site's Refresh button downloads the newest published snapshot. It cannot start a
+Data on screen is usually 1-2 minutes old (a snapshot each minute, plus up to 60 s of
+GitHub API caching); the header always shows the real fetch time. The site's Refresh button
+downloads the newest published snapshot. It cannot start a
 workflow: that needs a GitHub token, and any token embedded in a public page could be
 taken and misused. If nothing newer exists, the page says so. A snapshot older than
 5 minutes shows a "may be delayed" notice.
