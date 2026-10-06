@@ -1,0 +1,33 @@
+name: Snapshot
+
+# Keeps one job running that publishes a fresh snapshot.json to the data branch every minute.
+# Each run loops for ~5h40m (GitHub caps jobs at 6h). The schedule only exists to start the
+# next run: with the concurrency group below, a scheduled run waits while one is looping and
+# starts as soon as it ends. Start it the first time with "Run workflow".
+on:
+  schedule:
+    - cron: "*/15 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: snapshot-loop
+  cancel-in-progress: false
+
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: scripts
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node scripts/snapshot.mjs --loop
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          LOOP_MINUTES: "340"

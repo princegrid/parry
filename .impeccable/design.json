@@ -1,0 +1,128 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-06T21:40:00Z",
+  "title": "Design System: Parry",
+  "extensions": {
+    "colorMeta": {
+      "ground": { "role": "neutral", "displayName": "Ground", "canonical": "#0c0d0f", "tonalRamp": ["#0c0d0f", "#121316", "#17181c", "#1d1f24", "#24262c", "#30333a", "#5b606b", "#858b95"] },
+      "surface-1": { "role": "neutral", "displayName": "Panel", "canonical": "#121316" },
+      "surface-2": { "role": "neutral", "displayName": "Raised", "canonical": "#17181c" },
+      "surface-3": { "role": "neutral", "displayName": "Pressed", "canonical": "#1d1f24" },
+      "surface-4": { "role": "neutral", "displayName": "Floating", "canonical": "#24262c" },
+      "text": { "role": "neutral", "displayName": "Text", "canonical": "#eceef2" },
+      "text-2": { "role": "neutral", "displayName": "Text Secondary", "canonical": "#a9aeb7" },
+      "text-3": { "role": "neutral", "displayName": "Text Tertiary", "canonical": "#858b95" },
+      "ice": { "role": "primary", "displayName": "Ice", "canonical": "#8fcdf2", "tonalRamp": ["#08141c", "#123247", "#1f5272", "#2f739e", "#4f9bc9", "#8fcdf2", "#b3dcf6", "#e3f2fc"] },
+      "warn": { "role": "tertiary", "displayName": "Cooldown Amber", "canonical": "#e6bd73" },
+      "danger": { "role": "tertiary", "displayName": "Failure Coral", "canonical": "#f0928a" },
+      "slot-filled": { "role": "neutral", "displayName": "Taken Slot", "canonical": "#5b606b" },
+      "slot-full": { "role": "neutral", "displayName": "Full Slot", "canonical": "#3d4149" }
+    },
+    "typographyMeta": {
+      "product-name": { "displayName": "Product Name", "purpose": "The word Parry in the header. Nothing else uses this size." },
+      "state-title": { "displayName": "State Title", "purpose": "Titles of empty, error and rate-limit states." },
+      "count": { "displayName": "Player Count", "purpose": "Tabular player count leading each row." },
+      "body": { "displayName": "Body", "purpose": "Cells, buttons, notices, toolbar." },
+      "label": { "displayName": "Label", "purpose": "Column headers, status note, field labels. Sentence case." },
+      "identifier": { "displayName": "Identifier", "purpose": "Instance IDs and join links only." }
+    },
+    "shadows": [
+      { "name": "raised", "value": "0 1px 0 rgb(255 255 255 / 0.03) inset, 0 1px 2px rgb(0 0 0 / 0.4)", "purpose": "Secondary buttons and the checked sort segment." },
+      { "name": "accent", "value": "0 1px 0 rgb(255 255 255 / 0.25) inset, 0 1px 2px rgb(0 0 0 / 0.35)", "purpose": "Solid ice buttons." },
+      { "name": "panel", "value": "0 1px 0 rgb(255 255 255 / 0.025) inset, 0 20px 50px -30px rgb(0 0 0 / 0.8)", "purpose": "The single main panel." },
+      { "name": "float", "value": "0 1px 0 rgb(255 255 255 / 0.04) inset, 0 12px 32px -12px rgb(0 0 0 / 0.7), 0 3px 8px rgb(0 0 0 / 0.35)", "purpose": "Tooltips and toasts." }
+    ],
+    "motion": [
+      { "name": "ease-out", "value": "cubic-bezier(0.22, 1, 0.36, 1)", "purpose": "All state transitions." },
+      { "name": "fast", "value": "120ms", "purpose": "Hover, press, colour changes." },
+      { "name": "standard", "value": "180ms", "purpose": "Notices, toasts, caret rotation, slot fill (clip-path)." }
+    ],
+    "breakpoints": [
+      { "name": "compact", "value": "1023px" },
+      { "name": "shell", "value": "1120px" },
+      { "name": "mobile", "value": "719px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Join Button",
+      "kind": "button",
+      "refersTo": "button-join",
+      "description": "Per-row primary action. Tinted at rest, solid ice when its row is engaged.",
+      "html": "<a class=\"ds-join\" href=\"#\"><svg width=\"12\" height=\"12\" viewBox=\"0 0 256 256\" fill=\"currentColor\"><path d=\"M240 128a15.74 15.74 0 0 1-7.6 13.51L88.32 229.65a16 16 0 0 1-16.2.3A15.86 15.86 0 0 1 64 216.13V39.87a15.86 15.86 0 0 1 8.12-13.82 16 16 0 0 1 16.2.3l144.08 88.14A15.74 15.74 0 0 1 240 128Z\"/></svg>Join</a>",
+      "css": ".ds-join { display: inline-flex; align-items: center; gap: 6px; height: 30px; padding: 0 12px; border-radius: 8px; border: 1px solid rgb(143 205 242 / 0.38); background: rgb(143 205 242 / 0.12); color: #8fcdf2; font: 600 13px Geist, system-ui, sans-serif; text-decoration: none; transition: background-color 120ms, color 120ms; } .ds-join:hover, .ds-join:focus-visible { background: #8fcdf2; color: #08141c; border-color: transparent; outline: none; box-shadow: 0 1px 0 rgb(255 255 255 / 0.25) inset, 0 1px 2px rgb(0 0 0 / 0.35); }"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Refresh, Load more, Try again.",
+      "html": "<button class=\"ds-btn\">Refresh</button>",
+      "css": ".ds-btn { height: 32px; padding: 0 12px; border-radius: 8px; border: 1px solid rgb(255 255 255 / 0.11); background: #17181c; color: #eceef2; font: 500 13px Geist, system-ui, sans-serif; box-shadow: 0 1px 0 rgb(255 255 255 / 0.03) inset, 0 1px 2px rgb(0 0 0 / 0.4); transition: background-color 120ms, border-color 120ms; } .ds-btn:hover { background: #1d1f24; border-color: rgb(255 255 255 / 0.2); } .ds-btn:focus-visible { outline: 2px solid #8fcdf2; outline-offset: 2px; }"
+    },
+    {
+      "name": "Search Field",
+      "kind": "input",
+      "refersTo": "input-field",
+      "description": "Instance ID search with a slash keycap.",
+      "html": "<label class=\"ds-search\"><input placeholder=\"Search instance ID\"><kbd>/</kbd></label>",
+      "css": ".ds-search { display: flex; align-items: center; width: 240px; height: 32px; padding: 0 8px 0 12px; border-radius: 8px; border: 1px solid rgb(255 255 255 / 0.11); background: #0c0d0f; } .ds-search:focus-within { border-color: rgb(143 205 242 / 0.38); box-shadow: 0 0 0 3px rgb(143 205 242 / 0.12); } .ds-search input { flex: 1; border: 0; background: none; color: #eceef2; font: 13px Geist, system-ui, sans-serif; outline: none; } .ds-search input::placeholder { color: #858b95; } .ds-search kbd { font: 10.5px 'Geist Mono', monospace; color: #a9aeb7; border: 1px solid rgb(255 255 255 / 0.11); border-bottom-width: 2px; border-radius: 4px; padding: 0 4px; background: #17181c; }"
+    },
+    {
+      "name": "Sort Segmented Control",
+      "kind": "nav",
+      "refersTo": "segment-selected",
+      "description": "Fewest / most players radio group.",
+      "html": "<div class=\"ds-seg\"><button aria-checked=\"true\">Fewest players</button><button>Most players</button></div>",
+      "css": ".ds-seg { display: inline-flex; gap: 2px; padding: 2px; border-radius: 8px; border: 1px solid rgb(255 255 255 / 0.11); background: #0c0d0f; } .ds-seg button { height: 26px; padding: 0 10px; border: 0; border-radius: 6px; background: none; color: #a9aeb7; font: 500 13px Geist, system-ui, sans-serif; } .ds-seg button:hover { color: #eceef2; } .ds-seg button[aria-checked=true] { background: #1d1f24; color: #eceef2; box-shadow: 0 1px 0 rgb(255 255 255 / 0.03) inset, 0 1px 2px rgb(0 0 0 / 0.4); }"
+    },
+    {
+      "name": "Slot Strip",
+      "kind": "custom",
+      "refersTo": "slot-strip",
+      "description": "Signature: one tick per player slot; grey taken, ice open.",
+      "html": "<span class=\"ds-slots\" style=\"--slots:30;--taken:0.4\"><span></span></span>",
+      "css": ".ds-slots { --w: 210px; --step: calc(var(--w) / var(--slots)); --gap: calc(var(--step) * 0.4); position: relative; display: inline-block; width: var(--w); height: 10px; background: repeating-linear-gradient(90deg, rgb(143 205 242 / 0.8) 0 calc(var(--step) - var(--gap)), transparent calc(var(--step) - var(--gap)) var(--step)); } .ds-slots span { position: absolute; inset: 0; clip-path: inset(0 calc((1 - var(--taken)) * 100%) 0 0); background: repeating-linear-gradient(90deg, #5b606b 0 calc(var(--step) - var(--gap)), transparent calc(var(--step) - var(--gap)) var(--step)); }"
+    },
+    {
+      "name": "Warning Notice",
+      "kind": "custom",
+      "refersTo": "notice-warn",
+      "description": "Rate limit or saved-copy banner above the table.",
+      "html": "<div class=\"ds-notice\"><strong>Roblox is rate-limiting new requests.</strong> Showing the most recent saved copy.</div>",
+      "css": ".ds-notice { padding: 8px 12px; border-radius: 8px; border: 1px solid rgb(230 189 115 / 0.22); background: rgb(230 189 115 / 0.1); color: #a9aeb7; font: 13px Geist, system-ui, sans-serif; } .ds-notice strong { color: #eceef2; font-weight: 500; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The lobby roster.",
+    "overview": "Parry is a working tool people open dozens of times a week to find a Blade Ball trading server and join it. It looks like a careful desktop app, not a website: one charcoal panel holds the toolbar, the server table and a status bar, and nothing competes with the list. The identity comes from precision and one signature device, not from decoration. Each server's capacity is drawn as a row of slot ticks, so a half-empty lobby is visible before you read any number.",
+    "keyCharacteristics": [
+      "One panel, one table, one accent. The list is usable on first paint.",
+      "Four-step cool charcoal ladder plus 1px hairlines carry all hierarchy.",
+      "Icy blue means three things only: open slots, the Join action and selection/focus.",
+      "Numbers are tabular Geist. Monospace is reserved for identifiers (instance IDs, links).",
+      "Every state is designed: skeleton, refreshing, empty, no match, failure, rate limit, saved copy, vanished instance, launch attempt."
+    ],
+    "rules": [
+      { "name": "The Room Rule", "body": "Ice marks room and action. It never decorates headings, borders of static containers or icons that do nothing.", "section": "colors" },
+      { "name": "The Unavailable Rule", "body": "A metric the API does not report renders as a muted \"n/a\" with a tooltip, never as 0.", "section": "colors" },
+      { "name": "The Sentence Case Rule", "body": "No uppercase eyebrows, no tracked micro-labels. Column headers and labels are sentence case at 12px in Text 3.", "section": "typography" },
+      { "name": "The No Dash Rule", "body": "Copy uses periods, commas and colons. No em or en dashes as punctuation.", "section": "typography" },
+      { "name": "The Ladder Rule", "body": "2px ticks, 4px keycaps and small tags, 6px segments and icon buttons inside controls, 8px buttons and inputs, 12px panels and toasts. Nothing is pill-shaped.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do keep the table as the first thing on screen at every size.",
+      "Do show missing data as unavailable and label snapshots as snapshots.",
+      "Do use ice only for room, Join, selection and focus.",
+      "Do use tabular Geist for every compared number.",
+      "Do keep every interactive control at least 44px tall on touch."
+    ],
+    "donts": [
+      "Don't add a hero, marketing heading, feature cards or \"best server\" badges.",
+      "Don't introduce a second accent, gradients, glass, glows or neon.",
+      "Don't fabricate regions, latency from the visitor, server age or trade activity.",
+      "Don't use monospace for numbers, labels or headings.",
+      "Don't put uppercase eyebrows above sections."
+    ]
+  }
+}

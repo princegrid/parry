@@ -1,0 +1,169 @@
+/* Parry design tokens. See DESIGN.md for the rationale behind each value. */
+:root {
+  color-scheme: dark;
+
+  /* Ground and surfaces: cool charcoal, each step a small lift. */
+  --bg: #0c0d0f;
+  --surface-1: #121316;
+  --surface-2: #17181c;
+  --surface-3: #1d1f24;
+  --surface-4: #24262c;
+
+  --line-faint: rgb(255 255 255 / 0.04);
+  --line: rgb(255 255 255 / 0.065);
+  --line-strong: rgb(255 255 255 / 0.11);
+  --line-focus: rgb(255 255 255 / 0.2);
+
+  /* Text: off-white down to the lowest tone that still clears 4.5:1 on surface-2. */
+  --text: #eceef2;
+  --text-2: #a9aeb7;
+  --text-3: #858b95;
+
+  /* The single accent: icy blue. Used for selection, focus, open slots and Join. */
+  --accent: #8fcdf2;
+  --accent-strong: #b3dcf6;
+  --accent-ink: #08141c;
+  --accent-soft: rgb(143 205 242 / 0.12);
+  --accent-wash: rgb(143 205 242 / 0.06); /* selected row */
+  --accent-line: rgb(143 205 242 / 0.38);
+
+  /* State colours, used only for real state. */
+  --warn: #e6bd73;
+  --warn-soft: rgb(230 189 115 / 0.1);
+  --danger: #f0928a;
+  --danger-soft: rgb(240 146 138 / 0.1);
+  --warn-line: rgb(230 189 115 / 0.22);
+  --danger-line: rgb(240 146 138 / 0.22);
+  --danger-line-strong: rgb(240 146 138 / 0.55);
+
+  /* Slot strip */
+  --slot-filled: #5b606b;
+  --slot-full: #3d4149;
+  --slot-open: rgb(143 205 242 / 0.8);
+
+  --radius-sm: 6px; /* chips, keycaps, ticks container */
+  --radius-md: 8px; /* buttons, inputs */
+  --radius-lg: 12px; /* panels */
+
+  --shadow-raised: 0 1px 0 rgb(255 255 255 / 0.03) inset, 0 1px 2px rgb(0 0 0 / 0.4);
+  --shadow-accent: 0 1px 0 rgb(255 255 255 / 0.25) inset, 0 1px 2px rgb(0 0 0 / 0.35);
+  --shadow-panel: 0 1px 0 rgb(255 255 255 / 0.025) inset, 0 20px 50px -30px rgb(0 0 0 / 0.8);
+  --shadow-float: 0 1px 0 rgb(255 255 255 / 0.04) inset, 0 12px 32px -12px rgb(0 0 0 / 0.7),
+    0 3px 8px rgb(0 0 0 / 0.35);
+
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, "SF Mono", Menlo, monospace;
+
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --dur-fast: 120ms;
+  --dur: 180ms;
+
+  /* z-index scale */
+  --z-sticky: 10;
+  --z-tooltip: 30;
+  --z-toast: 40;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scrollbar-color: var(--surface-4) var(--bg);
+  scrollbar-gutter: stable;
+}
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.45;
+  font-feature-settings: "ss01", "cv11";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: rgb(143 205 242 / 0.28);
+  color: var(--text);
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--surface-4);
+  border: 3px solid var(--bg);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #30333a;
+}
+
+button,
+input {
+  font: inherit;
+  color: inherit;
+  letter-spacing: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+input {
+  caret-color: var(--accent);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Figures that get compared: Geist's tabular numerals, same face as the UI. */
+.num {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Identifiers only (instance IDs, links): monospace. */
+.mono {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/*
+ * Reduced motion: keyframe movement (entrances, skeleton pulse, spinners, the refresh sweep)
+ * is removed. Colour and opacity transitions stay, since they carry state, not motion.
+ * Loading remains visible through labels ("Refreshing", "Loading") and static indicators.
+ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+}
